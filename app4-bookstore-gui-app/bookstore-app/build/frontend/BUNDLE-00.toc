@@ -1,0 +1,3 @@
+([('frontend',
+   '/Users/davaldiv/codingLibrary/udemy/python-mega-course-10-real-world-apps/app4/bookstore-app/dist/frontend',
+   'EXECUTABLE')],)

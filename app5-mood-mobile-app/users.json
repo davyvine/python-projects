@@ -1,0 +1,42 @@
+{
+   "user1": {
+      "username": "John Wick",
+      "password": "pass1",
+      "created": "2020-07-07 00:16:28.293901"
+   },
+   "user2": {
+      "username": "Harry Potter",
+      "password": "pass2",
+      "created": "2020-07-07 00:28:07.315781"
+   },
+   "Anna": {
+      "username": "Anna",
+      "password": "Smith",
+      "created": "2021-03-03/11/21 21-18-26"
+   },
+   "Kat": {
+      "username": "Kat",
+      "password": "kat123",
+      "created": "2021-03-03/11/21 21-24-40"
+   },
+   "test": {
+      "username": "test",
+      "password": "1",
+      "created": "2021-03-03/11/21 21-26-33"
+   },
+   "1": {
+      "username": "1",
+      "password": "1",
+      "created": "2021-03-03/11/21 21-27-26"
+   },
+   "2": {
+      "username": "2",
+      "password": "2",
+      "created": "2021-03-03/11/21 21-28-11"
+   },
+   "":{
+      "username": "",
+      "password": "",
+      "created": "2021-03-03/11/21 21-28-11"
+   }
+}

@@ -1,0 +1,114 @@
+<LoginScreen>: #login page
+   GridLayout: #a way to separate widgets, invisible
+      cols: 1
+      GridLayout: #user login, name pass widget
+         cols: 1
+         padding: 15, 15 #horizontally , vertically
+         spacing: 20, 20 #space between boxes e.g username -> spacing -> password
+         Label:
+            text: "User Login"
+            font_size: "20sp" #sp=space-independent pixels
+         TextInput:
+            id: username
+            hint_text: "Username"
+         TextInput:
+            id: password
+            password: True #will make password invisble upon typing
+            hint_text: "Password"
+         RelativeLayout:
+            Button:
+               text: "Login"
+               on_press: root.login(root.ids.username.text, root.ids.password.text)
+               size_hint: 0.3, 0.5 #how much size it will get from the parent widget , width height- by default area is divided by widgets equally e.g uname pword widget 50% and footer 50%
+               pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+         Label:
+            id: login_wrong
+            text: ""
+      GridLayout: #footer part forgot password, sign up widget
+         cols: 2
+         size_hint: 0.2, 0.2 #20% space
+         padding: 10, 10
+         spacing: 10, 0
+         Button:
+            text: "Forgot Password?"
+            background_color: 1, 1, 1, 0 #make button like links - rgb 
+            #self refers to current widget Button if you want to access other attributes in footer grid layout use self.parent.state , 
+            # state has many value like pressed , released etc but the current state of the button is Normal
+            # ------> python code
+            opacity: 1 if self.state == 'normal' else 0.5 
+            color: 0.1, 0.7, 1, 1
+         Button:
+            background_color: 1, 1, 1, 0
+            opacity: 1 if self.state == 'normal' else 0.5 
+            color: 0.1, 0.7, 1, 1
+            text: "Sign Up"
+            on_press: root.sign_up() #root refers to Login Screen class in python
+
+#sign up page
+<SignUpScreen>:
+   GridLayout:
+      cols: 1
+      padding: 20, 20 
+      spacing: 20, 20
+      Label:
+         text: " Sign up for a space journey! "
+      TextInput:
+         id: username
+         hint_text: "Username"
+      TextInput:
+         id: password
+         hint_text: "Password"
+      Button:
+         text: "Submit"
+         on_press: root.add_user(root.ids.username.text, root.ids.password.text) #root is SignUpScreen class, to get the input value create id for each and access with .text property
+
+#signup success page
+<SignUpScreenSuccess>:
+   GridLayout:
+      cols: 1
+      Label:
+         text: "Sign up successful!"
+      Button:
+         text: "Login Page"
+         on_press: root.go_to_login()
+
+<LoginScreenSuccess>:
+   GridLayout:
+      cols: 1
+      padding: 30, 30
+      spacing: 30, 30
+      RelativeLayout:
+         ImageButton:
+            on_press: root.log_out()
+            #path of the image logout button, returns true or false
+            source: 'logout_hover.png' if self.hovered else 'logout_nothover.png' 
+            size_hint: 0.35, 0.35
+            pos_hint: {'center_x': 0.85, 'center_y': 0.8}
+      Label:
+         text: "How do you feel?"
+      TextInput:
+         id: feeling
+         hint_text: "Things to try: happy, sad, unloved ..."
+      Button:
+         text: "Enlighten me!"
+         on_press: root.get_quote(root.ids.feeling.text)
+      ScrollView: #widget
+         Label:
+            id: quote
+            text: ""
+            #make scrollable area
+            #will get the width and height of the LABEL field
+            text_size: self.width, None
+            #to fix overflowing of text - ignore size hinting y and make height dynamic
+            size_hint_y: None
+            height: self.texture_size[1] #first value 0 is width, 1 is height
+
+<RootWidget>:
+   LoginScreen:
+      name: "login_screen"
+   SignUpScreen:
+      name: "sign_up_screen"
+   SignUpScreenSuccess:
+      name: "sign_up_screen_success"
+   LoginScreenSuccess:
+      name: "login_screen_success"
